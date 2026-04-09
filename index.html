@@ -3,745 +3,506 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Lord Million Club — El club donde los millonarios se hacen. Educación financiera, crypto, acciones, trading y mentalidad millonaria.">
-<meta property="og:title" content="Lord Million Club">
-<meta property="og:description" content="El club donde los millonarios se hacen.">
-<meta property="og:type" content="website">
-<title>Lord Million Club — El club donde los millonarios se hacen</title>
+<meta name="description" content="Lord Million Club — Educación financiera de élite. Crypto, acciones, lujo e inversión.">
+<title>Lord Million Club</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --gold: #C9A84C;
-    --gold-light: #E8C96A;
-    --gold-dim: #8B6E2A;
-    --black: #0A0A0A;
-    --black2: #111111;
-    --black3: #1A1A1A;
-    --white: #F5F0E8;
-    --white2: #EDE8DC;
-    --gray: #888880;
-    --serif: 'Playfair Display', Georgia, serif;
-    --sans: 'DM Sans', sans-serif;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --g:#B8963E;--g2:#D4AF65;--g3:#8A6E2A;--g4:rgba(184,150,62,.12);
+  --b:#080808;--b2:#0E0E0E;--b3:#141414;--b4:#1C1C1C;
+  --w:#F2EDE4;--w2:#C8C0B0;--w3:#7A756C;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Outfit',sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94)
+}
+body{background:var(--b);color:var(--w);font-family:var(--sans);font-weight:300;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--b)}::-webkit-scrollbar-thumb{background:var(--g3)}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4rem;transition:background .4s,padding .4s}
+nav.scrolled{background:rgba(8,8,8,.95);backdrop-filter:blur(20px);padding:1rem 4rem;border-bottom:1px solid rgba(184,150,62,.1)}
+.nav-logo{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--g2);text-decoration:none}
+.nav-center{display:flex;gap:3rem;list-style:none;position:absolute;left:50%;transform:translateX(-50%)}
+.nav-center a{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w3);text-decoration:none;transition:color .2s}
+.nav-center a:hover{color:var(--g2)}
+.nav-right{display:flex;align-items:center;gap:1.5rem}
+.lang-sw{display:flex;gap:2px;border:1px solid rgba(184,150,62,.2)}
+.lang-sw button{background:none;border:none;font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w3);padding:.3rem .6rem;cursor:pointer;transition:all .2s}
+.lang-sw button.on{background:var(--g);color:var(--b)}
+.nav-member{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--b);background:var(--g2);padding:.5rem 1.4rem;text-decoration:none;transition:background .2s}
+.nav-member:hover{background:var(--g)}
 
-  html { scroll-behavior: smooth; }
+/* HERO */
+.hero{position:relative;height:100vh;min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:8vh;overflow:hidden}
+.slides{position:absolute;inset:0;z-index:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s var(--ease)}
+.slide.active{opacity:1}
+.slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,8,8,.4) 0%,rgba(8,8,8,.15) 40%,rgba(8,8,8,.75) 75%,rgba(8,8,8,.97) 100%)}
+.slide:nth-child(1){background-image:url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1800&q=80')}
+.slide:nth-child(2){background-image:url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1800&q=80')}
+.slide:nth-child(3){background-image:url('https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?w=1800&q=80')}
+.slide:nth-child(4){background-image:url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1800&q=80')}
+.slide:nth-child(5){background-image:url('https://images.unsplash.com/photo-1610375461246-83df859d849d?w=1800&q=80')}
+.slide-labels{position:absolute;bottom:8vh;left:4rem;z-index:10;display:flex;flex-direction:column;gap:.3rem}
+.slide-label{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(242,237,228,.4);opacity:0;transition:opacity .4s}
+.slide-label.active{opacity:1;color:var(--g2)}
+.hero-content{position:relative;z-index:10;text-align:center;width:100%;padding:0 2rem}
+.hero-eyebrow{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--g2);margin-bottom:1.6rem;opacity:0;animation:up 1s var(--ease) .2s forwards}
+.hero-h1{font-family:var(--serif);font-size:clamp(3.5rem,9vw,8rem);font-weight:300;line-height:.95;color:var(--w);margin-bottom:.15em;opacity:0;animation:up 1s var(--ease) .35s forwards}
+.hero-h1 em{font-style:italic;color:var(--g2)}
+.hero-rule{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--g2),transparent);margin:2rem auto;opacity:0;animation:up 1s var(--ease) .5s forwards}
+.hero-sub{font-size:clamp(.8rem,1.5vw,.95rem);font-weight:300;color:var(--w2);max-width:440px;margin:0 auto 2.5rem;line-height:1.8;opacity:0;animation:up 1s var(--ease) .6s forwards}
+.hero-dots{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:8px}
+.dot{width:24px;height:2px;background:rgba(184,150,62,.3);cursor:pointer;transition:background .3s,width .3s}
+.dot.active{background:var(--g2);width:40px}
 
-  body {
-    background: var(--black);
-    color: var(--white);
-    font-family: var(--sans);
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
+/* TICKER */
+.ticker-wrap{background:var(--b2);border-top:1px solid rgba(184,150,62,.15);border-bottom:1px solid rgba(184,150,62,.15);overflow:hidden;padding:.7rem 0}
+.ticker{display:flex;gap:4rem;animation:ticker 35s linear infinite;white-space:nowrap;width:max-content}
+.ticker-item{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w3);display:flex;align-items:center;gap:.8rem}
+.ticker-item span{color:var(--g2)}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 3rem;
-    background: rgba(10,10,10,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-  }
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--gold);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--gray);
-    text-decoration: none;
-    font-size: 0.82rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold);
-    color: var(--black);
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.55rem 1.4rem;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .nav-cta:hover { background: var(--gold-light); }
+/* SECTIONS */
+.section{padding:8rem 4rem}
+.s-label{font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem;display:flex;align-items:center;gap:1rem}
+.s-label::before{content:'';display:block;width:30px;height:1px;background:var(--g3)}
+.s-title{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--w);max-width:580px}
+.s-title em{font-style:italic;color:var(--g2)}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    text-align: center;
-    padding: 8rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.12) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(201,168,76,0.06) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.4);
-    padding: 0.4rem 1.2rem;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900;
-    line-height: 1.0;
-    letter-spacing: -0.02em;
-    color: var(--white);
-    margin-bottom: 0.3rem;
-    animation: fadeUp 0.9s ease 0.1s both;
-  }
-  .hero h1 span { color: var(--gold); }
-  .hero-sub {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: var(--gray);
-    max-width: 520px;
-    margin: 1.5rem auto 3rem;
-    font-weight: 300;
-    animation: fadeUp 1s ease 0.2s both;
-  }
-  .hero-form {
-    display: flex; gap: 0;
-    max-width: 480px; width: 100%;
-    animation: fadeUp 1s ease 0.3s both;
-  }
-  .hero-form input {
-    flex: 1;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(201,168,76,0.3);
-    border-right: none;
-    color: var(--white);
-    font-family: var(--sans);
-    font-size: 0.9rem;
-    padding: 0.85rem 1.2rem;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  .hero-form input::placeholder { color: var(--gray); }
-  .hero-form input:focus { border-color: var(--gold); }
-  .hero-form button {
-    background: var(--gold);
-    color: var(--black);
-    border: none;
-    font-family: var(--sans);
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.85rem 1.6rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s;
-  }
-  .hero-form button:hover { background: var(--gold-light); }
-  .hero-note {
-    font-size: 0.72rem;
-    color: var(--gray);
-    margin-top: 0.8rem;
-    animation: fadeUp 1s ease 0.4s both;
-  }
-  .hero-stats {
-    display: flex; gap: 3rem; margin-top: 5rem;
-    animation: fadeUp 1s ease 0.5s both;
-  }
-  .stat { text-align: center; }
-  .stat-n {
-    font-family: var(--serif);
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .stat-l { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray); margin-top: 0.3rem; }
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(184,150,62,.1);margin-top:4rem;border:1px solid rgba(184,150,62,.1)}
+.card{background:var(--b2);position:relative;overflow:hidden;text-decoration:none;display:block;aspect-ratio:3/4;transition:all .4s var(--ease)}
+.card-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform .6s var(--ease)}
+.card:hover .card-img{transform:scale(1.06)}
+.card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.97) 0%,rgba(8,8,8,.3) 60%,transparent 100%)}
+.card-body{position:absolute;bottom:0;left:0;right:0;padding:2rem 1.5rem}
+.card-cat{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--g2);margin-bottom:.6rem}
+.card-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--w);line-height:1.25;margin-bottom:.5rem}
+.card-desc{font-size:.75rem;color:var(--w3);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .4s;opacity:0}
+.card:hover .card-desc{max-height:80px;opacity:1}
+.card-arrow{position:absolute;top:1.5rem;right:1.5rem;width:36px;height:36px;border:1px solid rgba(184,150,62,.3);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s,border-color .3s}
+.card:hover .card-arrow{opacity:1;border-color:var(--g2)}
+.card-arrow svg{width:14px;height:14px;stroke:var(--g2);fill:none}
+.card:nth-child(1) .card-img{background-image:url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&q=80')}
+.card:nth-child(2) .card-img{background-image:url('https://images.unsplash.com/photo-1614023342667-6f060e9d1e04?w=800&q=80')}
+.card:nth-child(3) .card-img{background-image:url('https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80')}
+.card:nth-child(4) .card-img{background-image:url('https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=800&q=80')}
+.card:nth-child(5) .card-img{background-image:url('https://images.unsplash.com/photo-1565711561500-49678a10a63f?w=800&q=80')}
+.card:nth-child(6) .card-img{background-image:url('https://images.unsplash.com/photo-1610375461246-83df859d849d?w=800&q=80')}
+.card:nth-child(7) .card-img{background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80')}
+.card:nth-child(8) .card-img{background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80')}
 
-  /* ── DIVIDER ── */
-  .divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
-    margin: 0 3rem;
-  }
+/* QUOTE */
+.quote-block{padding:8rem 4rem;display:flex;align-items:flex-start;gap:4rem;border-top:1px solid rgba(184,150,62,.1);border-bottom:1px solid rgba(184,150,62,.1)}
+.quote-line{width:1px;background:var(--g3);flex-shrink:0;align-self:stretch;min-height:140px}
+.quote-text{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,3rem);font-weight:300;font-style:italic;line-height:1.25;color:var(--w);flex:1}
+.quote-attr{flex-shrink:0;display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;gap:.3rem;min-width:160px}
+.quote-name{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g2)}
+.quote-role{font-size:.65rem;color:var(--w3)}
 
-  /* ── QUOTE ── */
-  .quote-section {
-    padding: 6rem 2rem;
-    text-align: center;
-    position: relative;
-  }
-  .quote-mark {
-    font-family: var(--serif);
-    font-size: 8rem;
-    color: rgba(201,168,76,0.12);
-    line-height: 0;
-    position: absolute;
-    top: 4rem; left: 50%;
-    transform: translateX(-50%);
-    pointer-events: none;
-    user-select: none;
-  }
-  .quote-text {
-    font-family: var(--serif);
-    font-size: clamp(1.4rem, 3vw, 2.2rem);
-    font-weight: 700;
-    max-width: 700px;
-    margin: 0 auto 1.5rem;
-    color: var(--white);
-    line-height: 1.3;
-    position: relative;
-  }
-  .quote-author { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+/* AFFILIATES */
+.aff-section{padding:8rem 4rem;background:var(--b2)}
+.aff-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(184,150,62,.08);margin-top:4rem;border:1px solid rgba(184,150,62,.08)}
+.aff-card{background:var(--b2);padding:2.5rem 2rem;display:flex;flex-direction:column;align-items:flex-start;gap:1rem;text-decoration:none;transition:background .2s;position:relative}
+.aff-card:hover{background:var(--b3)}
+.aff-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.aff-card:hover::after{transform:scaleX(1)}
+.aff-name{font-family:var(--serif);font-size:1.2rem;color:var(--w);font-weight:400}
+.aff-bonus{font-size:.72rem;color:var(--g2)}
+.aff-desc{font-size:.72rem;color:var(--w3);line-height:1.6;flex:1}
+.aff-link{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);display:flex;align-items:center;gap:.4rem}
+.aff-link svg{width:10px;height:10px;stroke:currentColor;fill:none}
 
-  /* ── CATEGORIES ── */
-  .section { padding: 6rem 3rem; }
-  .section-label {
-    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 0.8rem;
-  }
-  .section-title {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700; color: var(--white);
-    margin-bottom: 3rem; max-width: 500px;
-    line-height: 1.2;
-  }
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1px;
-    border: 1px solid rgba(201,168,76,0.12);
-  }
-  .cat-card {
-    background: var(--black2);
-    padding: 2rem 1.5rem;
-    text-decoration: none;
-    display: block;
-    border: 1px solid transparent;
-    transition: background 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-  .cat-card::after {
-    content: '';
-    position: absolute; bottom: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s;
-  }
-  .cat-card:hover { background: var(--black3); border-color: rgba(201,168,76,0.2); }
-  .cat-card:hover::after { transform: scaleX(1); }
-  .cat-icon { font-size: 1.6rem; margin-bottom: 0.8rem; }
-  .cat-name {
-    font-family: var(--serif);
-    font-size: 1.1rem; font-weight: 700;
-    color: var(--white); margin-bottom: 0.4rem;
-  }
-  .cat-desc { font-size: 0.78rem; color: var(--gray); line-height: 1.5; }
+/* MEMBERSHIP */
+.mem-section{padding:8rem 4rem}
+.mem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(184,150,62,.1);margin-top:4rem;border:1px solid rgba(184,150,62,.1)}
+.tier{background:var(--b2);padding:3rem 2.5rem;position:relative}
+.tier.highlight{background:var(--b3);border:1px solid rgba(184,150,62,.3)}
+.tier-tag{position:absolute;top:-1px;left:2rem;background:var(--g);color:var(--b);font-size:.55rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .8rem}
+.tier-level{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--w3);margin-bottom:1.5rem}
+.tier-name{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--w);margin-bottom:.3rem}
+.tier-price{font-family:var(--serif);font-size:3rem;color:var(--g2);font-weight:300;margin-bottom:2.5rem;line-height:1}
+.tier-price small{font-size:.9rem;color:var(--w3);font-family:var(--sans);font-weight:300}
+.tier-list{list-style:none;margin-bottom:2.5rem}
+.tier-list li{font-size:.78rem;color:var(--w3);padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:.7rem}
+.tier-list li::before{content:'';width:4px;height:4px;background:var(--g);border-radius:50%;flex-shrink:0}
+.tier-btn{display:block;width:100%;padding:.85rem;text-align:center;font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:all .2s}
+.tier-btn.ghost{background:transparent;border:1px solid rgba(184,150,62,.25);color:var(--g)}
+.tier-btn.ghost:hover{border-color:var(--g2);background:var(--g4)}
+.tier-btn.solid{background:var(--g2);color:var(--b)}
+.tier-btn.solid:hover{background:var(--g)}
 
-  /* ── FEATURES ── */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  .feature {
-    padding: 2.5rem;
-    border: 1px solid rgba(201,168,76,0.1);
-    position: relative;
-  }
-  .feature-num {
-    font-family: var(--serif);
-    font-size: 3.5rem; font-weight: 900;
-    color: rgba(201,168,76,0.12);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  .feature-title {
-    font-family: var(--serif);
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--white); margin-bottom: 0.6rem;
-  }
-  .feature-text { font-size: 0.85rem; color: var(--gray); line-height: 1.7; }
+/* TELEGRAM */
+.tg-section{padding:8rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;border-top:1px solid rgba(184,150,62,.1)}
+.tg-right{display:flex;flex-direction:column;gap:2rem}
+.tg-stat{display:flex;align-items:baseline;gap:1rem}
+.tg-stat-n{font-family:var(--serif);font-size:3rem;font-weight:300;color:var(--g2);line-height:1}
+.tg-stat-l{font-size:.72rem;color:var(--w3);letter-spacing:.1em}
+.tg-divider{height:1px;background:rgba(184,150,62,.1)}
+.tg-btn{display:inline-flex;align-items:center;gap:.8rem;background:var(--b3);border:1px solid rgba(184,150,62,.2);color:var(--w2);text-decoration:none;padding:1rem 2rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;transition:all .2s;align-self:flex-start}
+.tg-btn:hover{border-color:var(--g2);color:var(--g2)}
+.tg-btn svg{width:18px;height:18px;fill:#229ED9;flex-shrink:0}
 
-  /* ── AFFILIATE BAND ── */
-  .affiliate-band {
-    background: var(--black2);
-    border-top: 1px solid rgba(201,168,76,0.15);
-    border-bottom: 1px solid rgba(201,168,76,0.15);
-    padding: 4rem 3rem;
-    text-align: center;
-  }
-  .affiliate-band h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 700; color: var(--white);
-    margin-bottom: 0.8rem;
-  }
-  .affiliate-band p { font-size: 0.88rem; color: var(--gray); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-  .affiliate-row {
-    display: flex; flex-wrap: wrap;
-    gap: 1rem; justify-content: center;
-  }
-  .aff-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(201,168,76,0.08);
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold);
-    font-family: var(--sans);
-    font-size: 0.8rem; font-weight: 500;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 0.7rem 1.4rem;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-    cursor: pointer;
-  }
-  .aff-btn:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
-  .aff-btn.primary {
-    background: var(--gold); color: var(--black);
-    border-color: var(--gold);
-  }
-  .aff-btn.primary:hover { background: var(--gold-light); }
+/* FOOTER */
+footer{background:var(--b);border-top:1px solid rgba(184,150,62,.1);padding:4rem}
+.footer-top{display:flex;align-items:flex-start;justify-content:space-between;gap:3rem;margin-bottom:3rem}
+.footer-brand a{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--g2);text-decoration:none;display:block;margin-bottom:1rem}
+.footer-brand p{font-size:.72rem;color:var(--w3);max-width:220px;line-height:1.7}
+.footer-col h4{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--g);margin-bottom:1.2rem}
+.footer-col a{display:block;font-size:.75rem;color:var(--w3);text-decoration:none;margin-bottom:.6rem;transition:color .2s}
+.footer-col a:hover{color:var(--g2)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:2rem;border-top:1px solid rgba(184,150,62,.07);gap:2rem;flex-wrap:wrap}
+.footer-copy{font-size:.65rem;color:var(--w3)}
+.footer-disc{font-size:.6rem;color:rgba(122,117,108,.5);max-width:500px;line-height:1.7;text-align:right}
 
-  /* ── MEMBERSHIP ── */
-  .membership-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .tier {
-    border: 1px solid rgba(201,168,76,0.15);
-    padding: 2.5rem 2rem;
-    position: relative;
-    transition: border-color 0.2s;
-  }
-  .tier:hover { border-color: rgba(201,168,76,0.4); }
-  .tier.featured {
-    border-color: var(--gold);
-    background: rgba(201,168,76,0.04);
-  }
-  .tier-badge {
-    position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-    background: var(--gold); color: var(--black);
-    font-size: 0.62rem; font-weight: 500; letter-spacing: 0.15em;
-    text-transform: uppercase; padding: 0.25rem 0.8rem;
-    white-space: nowrap;
-  }
-  .tier-crown { font-size: 1.8rem; margin-bottom: 1rem; }
-  .tier-name {
-    font-family: var(--serif);
-    font-size: 1.2rem; font-weight: 700;
-    color: var(--white); margin-bottom: 0.3rem;
-  }
-  .tier-price {
-    font-size: 1.8rem; font-weight: 500;
-    color: var(--gold); margin-bottom: 1.2rem;
-    line-height: 1;
-  }
-  .tier-price span { font-size: 0.8rem; color: var(--gray); font-weight: 300; }
-  .tier-features { list-style: none; }
-  .tier-features li {
-    font-size: 0.8rem; color: var(--gray);
-    padding: 0.35rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    display: flex; align-items: center; gap: 0.5rem;
-  }
-  .tier-features li::before { content: '✓'; color: var(--gold); font-size: 0.7rem; }
-  .tier-cta {
-    display: block; width: 100%;
-    margin-top: 1.8rem;
-    padding: 0.75rem;
-    font-family: var(--sans);
-    font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    text-align: center; text-decoration: none;
-    cursor: pointer; border: none;
-    transition: all 0.2s;
-  }
-  .tier-cta.outline {
-    background: transparent;
-    border: 1px solid rgba(201,168,76,0.3);
-    color: var(--gold);
-  }
-  .tier-cta.outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-  .tier-cta.solid { background: var(--gold); color: var(--black); }
-  .tier-cta.solid:hover { background: var(--gold-light); }
+/* ANIMATIONS */
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 
-  /* ── TELEGRAM CTA ── */
-  .telegram-section {
-    padding: 6rem 3rem;
-    text-align: center;
-    background: var(--black2);
-    border-top: 1px solid rgba(201,168,76,0.1);
-  }
-  .telegram-section h2 {
-    font-family: var(--serif);
-    font-size: clamp(1.8rem, 4vw, 3rem);
-    font-weight: 700; color: var(--white);
-    margin-bottom: 1rem;
-  }
-  .telegram-section p { color: var(--gray); font-size: 0.9rem; margin-bottom: 2rem; max-width: 420px; margin-left: auto; margin-right: auto; }
-  .telegram-btn {
-    display: inline-flex; align-items: center; gap: 0.6rem;
-    background: #229ED9;
-    color: #fff;
-    font-family: var(--sans);
-    font-size: 0.85rem; font-weight: 500;
-    padding: 0.9rem 2rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .telegram-btn:hover { opacity: 0.88; }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 3rem;
-    border-top: 1px solid rgba(201,168,76,0.1);
-    display: flex; align-items: center; justify-content: space-between;
-    flex-wrap: wrap; gap: 1.5rem;
-  }
-  .footer-logo {
-    font-family: var(--serif);
-    font-size: 1rem; font-weight: 700;
-    color: var(--gold); text-decoration: none;
-  }
-  .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-  .footer-links a { font-size: 0.75rem; color: var(--gray); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 0.72rem; color: var(--gray); }
-  .footer-disclaimer { font-size: 0.65rem; color: rgba(136,136,128,0.6); margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(201,168,76,0.07); text-align: center; line-height: 1.6; }
-
-  /* ── LANG TOGGLE ── */
-  .lang-toggle {
-    display: flex; gap: 0.3rem;
-  }
-  .lang-btn {
-    font-size: 0.7rem; letter-spacing: 0.1em;
-    padding: 0.2rem 0.6rem;
-    border: 1px solid rgba(201,168,76,0.2);
-    background: transparent; color: var(--gray);
-    cursor: pointer; transition: all 0.2s;
-    font-family: var(--sans);
-  }
-  .lang-btn.active { background: var(--gold); color: var(--black); border-color: var(--gold); }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 1rem 1.2rem; }
-    .nav-links { display: none; }
-    .section { padding: 4rem 1.2rem; }
-    .hero { padding: 7rem 1.2rem 3rem; }
-    .hero-stats { gap: 1.5rem; }
-    .hero-form { flex-direction: column; }
-    .hero-form input { border-right: 1px solid rgba(201,168,76,0.3); }
-    footer { flex-direction: column; text-align: center; padding: 2rem 1.2rem; }
-    .affiliate-band { padding: 3rem 1.2rem; }
-    .telegram-section { padding: 4rem 1.2rem; }
-  }
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .cards-grid{grid-template-columns:repeat(2,1fr)}
+  .aff-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-center{display:none}
+}
+@media(max-width:768px){
+  nav,nav.scrolled{padding:1.2rem 1.5rem}
+  .section,.aff-section,.mem-section,.tg-section,footer{padding:4rem 1.5rem}
+  .hero-content{padding:0 1.5rem}
+  .slide-labels{left:1.5rem}
+  .cards-grid{grid-template-columns:1fr}
+  .card{aspect-ratio:4/3}
+  .quote-block{flex-direction:column;gap:2rem;padding:4rem 1.5rem}
+  .quote-attr{align-items:flex-start}
+  .aff-grid{grid-template-columns:1fr}
+  .mem-grid{grid-template-columns:1fr}
+  .tg-section{grid-template-columns:1fr;gap:3rem}
+  .footer-top{flex-direction:column}
+  .footer-disc{text-align:left}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
+<nav id="nav">
   <a href="#" class="nav-logo">LMC</a>
-  <ul class="nav-links">
+  <ul class="nav-center">
     <li><a href="#aprende" data-es="Aprende" data-en="Learn">Aprende</a></li>
     <li><a href="#mercados" data-es="Mercados" data-en="Markets">Mercados</a></li>
-    <li><a href="#club" data-es="El Club" data-en="The Club">El Club</a></li>
+    <li><a href="#club" data-es="Membresías" data-en="Membership">Membresías</a></li>
+    <li><a href="#comunidad" data-es="Comunidad" data-en="Community">Comunidad</a></li>
   </ul>
-  <div style="display:flex;align-items:center;gap:1rem;">
-    <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('es')">ES</button>
-      <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="on" onclick="setLang('es')">ES</button>
+      <button onclick="setLang('en')">EN</button>
     </div>
-    <a href="#unirse" class="nav-cta" data-es="Únete gratis" data-en="Join free">Únete gratis</a>
+    <a href="#club" class="nav-member" data-es="Unirse" data-en="Join">Unirse</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-  <div class="hero-tag" data-es="✦ Bienvenido al club" data-en="✦ Welcome to the club">✦ Bienvenido al club</div>
-  <h1 data-es="Lord <span>Million</span><br>Club" data-en="Lord <span>Million</span><br>Club">Lord <span>Million</span><br>Club</h1>
-  <p class="hero-sub" data-es="El ecosistema financiero donde la mentalidad millonaria se convierte en acción. Crypto, acciones, trading, lujo e inversión." data-en="The financial ecosystem where the millionaire mindset becomes action. Crypto, stocks, trading, luxury and investment.">El ecosistema financiero donde la mentalidad millonaria se convierte en acción. Crypto, acciones, trading, lujo e inversión.</p>
-
-  <form class="hero-form" id="unirse" onsubmit="handleSubmit(event)">
-    <input type="email" id="email-input" placeholder="tu@email.com" required>
-    <button type="submit" data-es="Entrar al club" data-en="Join the club">Entrar al club</button>
-  </form>
-  <p class="hero-note" data-es="100% gratis. Sin spam. Acceso inmediato." data-en="100% free. No spam. Immediate access.">100% gratis. Sin spam. Acceso inmediato.</p>
-
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-n">10K+</div>
-      <div class="stat-l" data-es="Miembros" data-en="Members">Miembros</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">4</div>
-      <div class="stat-l" data-es="Guías semanales" data-en="Weekly guides">Guías semanales</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">$0</div>
-      <div class="stat-l" data-es="Para empezar" data-en="To start">Para empezar</div>
-    </div>
+<!-- HERO SLIDESHOW -->
+<section class="hero">
+  <div class="slides">
+    <div class="slide active"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- QUOTE -->
-<section class="quote-section">
-  <div class="quote-mark">"</div>
-  <blockquote class="quote-text" data-es="&ldquo;El riesgo viene de no saber lo que estás haciendo.&rdquo;" data-en="&ldquo;Risk comes from not knowing what you are doing.&rdquo;">"El riesgo viene de no saber lo que estás haciendo."</blockquote>
-  <p class="quote-author">— Warren Buffett</p>
-</section>
-
-<div class="divider"></div>
-
-<!-- CATEGORIES -->
-<section class="section" id="aprende">
-  <p class="section-label" data-es="Aprende · Learn" data-en="Learn · Aprende">Aprende · Learn</p>
-  <h2 class="section-title" data-es="Todo lo que el 1% ya sabe" data-en="Everything the 1% already knows">Todo lo que el 1% ya sabe</h2>
-
-  <div class="categories-grid" id="mercados">
-    <a href="#" class="cat-card">
-      <div class="cat-icon">₿</div>
-      <div class="cat-name" data-es="Crypto & Bitcoin" data-en="Crypto & Bitcoin">Crypto & Bitcoin</div>
-      <div class="cat-desc" data-es="Guías paso a paso para comprar, guardar y multiplicar tu crypto." data-en="Step-by-step guides to buy, store and grow your crypto.">Guías paso a paso para comprar, guardar y multiplicar tu crypto.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">📈</div>
-      <div class="cat-name" data-es="Acciones & ETF" data-en="Stocks & ETF">Acciones & ETF</div>
-      <div class="cat-desc" data-es="Cómo invertir en los mercados globales desde cero." data-en="How to invest in global markets from scratch.">Cómo invertir en los mercados globales desde cero.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🏦</div>
-      <div class="cat-name" data-es="Bonos & Renta fija" data-en="Bonds & Fixed income">Bonos & Renta fija</div>
-      <div class="cat-desc" data-es="La inversión defensiva que los ricos usan para proteger capital." data-en="The defensive investment the wealthy use to protect capital.">La inversión defensiva que los ricos usan para proteger capital.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🏠</div>
-      <div class="cat-name" data-es="Inmobiliaria" data-en="Real Estate">Inmobiliaria</div>
-      <div class="cat-desc" data-es="Hipotecas, REITs y cómo comprar tu primera propiedad." data-en="Mortgages, REITs and how to buy your first property.">Hipotecas, REITs y cómo comprar tu primera propiedad.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🥇</div>
-      <div class="cat-name" data-es="Metales & Materias primas" data-en="Metals & Commodities">Metales & Materias primas</div>
-      <div class="cat-desc" data-es="Oro, plata y materias primas como cobertura de inflación." data-en="Gold, silver and commodities as inflation hedge.">Oro, plata y materias primas como cobertura de inflación.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">💎</div>
-      <div class="cat-name" data-es="Lujo como inversión" data-en="Luxury as investment">Lujo como inversión</div>
-      <div class="cat-desc" data-es="Relojes, arte, vino, piedras preciosas. Activos que aprecian." data-en="Watches, art, wine, gems. Assets that appreciate.">Relojes, arte, vino, piedras preciosas. Activos que aprecian.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🔗</div>
-      <div class="cat-name" data-es="Tokenización" data-en="Tokenization">Tokenización</div>
-      <div class="cat-desc" data-es="Activos reales en blockchain. El futuro de la inversión." data-en="Real assets on blockchain. The future of investment.">Activos reales en blockchain. El futuro de la inversión.</div>
-    </a>
-    <a href="#" class="cat-card">
-      <div class="cat-icon">🧠</div>
-      <div class="cat-name" data-es="Trading con IA" data-en="AI Trading">Trading con IA</div>
-      <div class="cat-desc" data-es="Indicadores, análisis técnico y señales potenciadas con IA." data-en="Indicators, technical analysis and AI-powered signals.">Indicadores, análisis técnico y señales potenciadas con IA.</div>
-    </a>
+  <div class="slide-labels">
+    <div class="slide-label active" data-es="Crypto & Bitcoin" data-en="Crypto & Bitcoin">Crypto & Bitcoin</div>
+    <div class="slide-label" data-es="Artículos de lujo" data-en="Luxury assets">Artículos de lujo</div>
+    <div class="slide-label" data-es="Acciones globales" data-en="Global stocks">Acciones globales</div>
+    <div class="slide-label" data-es="Ahorro inteligente" data-en="Smart savings">Ahorro inteligente</div>
+    <div class="slide-label" data-es="Últimas tendencias" data-en="Latest trends">Últimas tendencias</div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- FEATURES -->
-<section class="section">
-  <p class="section-label" data-es="Por qué LMC" data-en="Why LMC">Por qué LMC</p>
-  <h2 class="section-title" data-es="No es información. Es transformación." data-en="Not information. Transformation.">No es información. Es transformación.</h2>
-  <div class="features-grid">
-    <div class="feature">
-      <div class="feature-num">01</div>
-      <div class="feature-title" data-es="Contenido que actúa" data-en="Content that acts">Contenido que actúa</div>
-      <div class="feature-text" data-es="Cada guía termina con un paso concreto que podés ejecutar hoy. Sin teoría vacía." data-en="Every guide ends with a concrete step you can execute today. No empty theory.">Cada guía termina con un paso concreto que podés ejecutar hoy. Sin teoría vacía.</div>
-    </div>
-    <div class="feature">
-      <div class="feature-num">02</div>
-      <div class="feature-title" data-es="Bilingüe por defecto" data-en="Bilingual by default">Bilingüe por defecto</div>
-      <div class="feature-text" data-es="Todo el contenido en español e inglés. Para que ninguna frontera te limite." data-en="All content in Spanish and English. So no border limits you.">Todo el contenido en español e inglés. Para que ninguna frontera te limite.</div>
-    </div>
-    <div class="feature">
-      <div class="feature-num">03</div>
-      <div class="feature-title" data-es="Actualizado con IA" data-en="AI-updated">Actualizado con IA</div>
-      <div class="feature-text" data-es="Nuestro sistema procesa noticias globales y las convierte en guías prácticas cada día." data-en="Our system processes global news and turns it into practical guides daily.">Nuestro sistema procesa noticias globales y las convierte en guías prácticas cada día.</div>
-    </div>
-    <div class="feature">
-      <div class="feature-num">04</div>
-      <div class="feature-title" data-es="Comunidad que crece" data-en="Growing community">Comunidad que crece</div>
-      <div class="feature-text" data-es="Miembros en más de 20 países. Red de contactos, señales y oportunidades reales." data-en="Members in 20+ countries. Network, signals and real opportunities.">Miembros en más de 20 países. Red de contactos, señales y oportunidades reales.</div>
-    </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Lord Million Club — Est. 2026</p>
+    <h1 class="hero-h1">Lord <em>Million</em><br>Club</h1>
+    <div class="hero-rule"></div>
+    <p class="hero-sub" data-es="El ecosistema donde la mentalidad millonaria se convierte en acción. Crypto, acciones, lujo e inversión de élite." data-en="The ecosystem where the millionaire mindset becomes action. Crypto, stocks, luxury and elite investing.">El ecosistema donde la mentalidad millonaria se convierte en acción. Crypto, acciones, lujo e inversión de élite.</p>
   </div>
+  <div class="hero-dots" id="dots"></div>
 </section>
 
-<!-- AFFILIATE BAND -->
-<div class="affiliate-band">
-  <h2 data-es="Empezá a invertir hoy" data-en="Start investing today">Empezá a invertir hoy</h2>
-  <p data-es="Plataformas verificadas por LMC. Abrí tu cuenta con nuestro código y recibí bonos exclusivos." data-en="LMC-verified platforms. Open your account with our code and get exclusive bonuses.">Plataformas verificadas por LMC. Abrí tu cuenta con nuestro código y recibí bonos exclusivos.</p>
-  <div class="affiliate-row">
-    <a href="https://www.binance.com/es/activity/referral-entry/CPA?ref=TU_CODIGO" target="_blank" class="aff-btn primary">₿ Binance — 20% off fees</a>
-    <a href="https://www.bybit.com/es-ES/invite?ref=TU_CODIGO" target="_blank" class="aff-btn">Bybit — Hasta $30,000</a>
-    <a href="https://coinbase.com/join/TU_CODIGO" target="_blank" class="aff-btn">Coinbase — $10 gratis</a>
-    <a href="https://shop.ledger.com/es?r=TU_CODIGO" target="_blank" class="aff-btn">🔒 Ledger Wallet</a>
-    <a href="https://www.etoro.com/" target="_blank" class="aff-btn">eToro — Acciones</a>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="ticker-item">Bitcoin <span>Crypto</span></div>
+    <div class="ticker-item">S&amp;P 500 <span>Acciones</span></div>
+    <div class="ticker-item">Oro <span>Metales</span></div>
+    <div class="ticker-item">Rolex Daytona <span>Lujo</span></div>
+    <div class="ticker-item">REITs <span>Inmobiliaria</span></div>
+    <div class="ticker-item">Ethereum <span>DeFi</span></div>
+    <div class="ticker-item">Bonos del Tesoro <span>Renta Fija</span></div>
+    <div class="ticker-item">Arte contemporáneo <span>Coleccionables</span></div>
+    <div class="ticker-item">ETF Global <span>Diversificación</span></div>
+    <div class="ticker-item">Tokenización <span>Web3</span></div>
+    <div class="ticker-item">Bitcoin <span>Crypto</span></div>
+    <div class="ticker-item">S&amp;P 500 <span>Acciones</span></div>
+    <div class="ticker-item">Oro <span>Metales</span></div>
+    <div class="ticker-item">Rolex Daytona <span>Lujo</span></div>
+    <div class="ticker-item">REITs <span>Inmobiliaria</span></div>
+    <div class="ticker-item">Ethereum <span>DeFi</span></div>
+    <div class="ticker-item">Bonos del Tesoro <span>Renta Fija</span></div>
+    <div class="ticker-item">Arte contemporáneo <span>Coleccionables</span></div>
+    <div class="ticker-item">ETF Global <span>Diversificación</span></div>
+    <div class="ticker-item">Tokenización <span>Web3</span></div>
   </div>
 </div>
 
+<!-- CARDS -->
+<section class="section reveal" id="aprende">
+  <p class="s-label" data-es="Explora" data-en="Explore">Explora</p>
+  <h2 class="s-title" data-es="Todo lo que el <em>1%</em> ya domina" data-en="Everything the <em>1%</em> already masters">Todo lo que el <em>1%</em> ya domina</h2>
+  <div class="cards-grid" id="mercados">
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Crypto" data-en="Crypto">Crypto</p>
+        <h3 class="card-title" data-es="Cómo comprar tu primer Bitcoin" data-en="How to buy your first Bitcoin">Cómo comprar tu primer Bitcoin</h3>
+        <p class="card-desc" data-es="Guía paso a paso para principiantes. De cero a tu primera inversión." data-en="Step-by-step guide. From zero to your first investment.">Guía paso a paso para principiantes. De cero a tu primera inversión.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Lujo" data-en="Luxury">Lujo</p>
+        <h3 class="card-title" data-es="Relojes que multiplican capital" data-en="Watches that multiply capital">Relojes que multiplican capital</h3>
+        <p class="card-desc" data-es="Rolex, Patek y AP como activos que superan al mercado." data-en="Rolex, Patek and AP as assets that outperform the market.">Rolex, Patek y AP como activos que superan al mercado.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Acciones" data-en="Stocks">Acciones</p>
+        <h3 class="card-title" data-es="Tu primera acción en bolsa" data-en="Your first stock market trade">Tu primera acción en bolsa</h3>
+        <p class="card-desc" data-es="Cómo invertir en las mejores empresas del mundo." data-en="How to invest in the world's best companies.">Cómo invertir en las mejores empresas del mundo.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Ahorro" data-en="Savings">Ahorro</p>
+        <h3 class="card-title" data-es="El método 50/30/20 que cambia todo" data-en="The 50/30/20 method that changes everything">El método 50/30/20</h3>
+        <p class="card-desc" data-es="El sistema que usan los millonarios para construir riqueza." data-en="The system millionaires use to build wealth.">El sistema que usan los millonarios para construir riqueza.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Inmobiliaria" data-en="Real Estate">Inmobiliaria</p>
+        <h3 class="card-title" data-es="Comprar tu primera propiedad" data-en="Buying your first property">Comprar tu primera propiedad</h3>
+        <p class="card-desc" data-es="Hipotecas, REITs y estrategias para entrar al mercado." data-en="Mortgages, REITs and strategies to enter the market.">Hipotecas, REITs y estrategias para entrar al mercado.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Metales" data-en="Metals">Metales</p>
+        <h3 class="card-title" data-es="Oro y plata como refugio de valor" data-en="Gold and silver as value refuge">Oro y plata como refugio</h3>
+        <p class="card-desc" data-es="Por qué el 1% siempre tiene metales en su portafolio." data-en="Why the 1% always holds metals in their portfolio.">Por qué el 1% siempre tiene metales en su portafolio.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Trading" data-en="Trading">Trading</p>
+        <h3 class="card-title" data-es="Indicadores que realmente funcionan" data-en="Indicators that actually work">Indicadores que funcionan</h3>
+        <p class="card-desc" data-es="RSI, MACD y medias móviles con ejemplos reales." data-en="RSI, MACD and moving averages with real examples.">RSI, MACD y medias móviles con ejemplos reales.</p>
+      </div>
+    </a>
+    <a href="#" class="card">
+      <div class="card-img"></div><div class="card-overlay"></div>
+      <div class="card-arrow"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+      <div class="card-body">
+        <p class="card-cat" data-es="Tendencias" data-en="Trends">Tendencias</p>
+        <h3 class="card-title" data-es="Tokenización: el futuro ya llegó" data-en="Tokenization: the future is here">Tokenización: el futuro</h3>
+        <p class="card-desc" data-es="Activos reales en blockchain. La revolución que cambia todo." data-en="Real assets on blockchain. The revolution that changes everything.">Activos reales en blockchain. La revolución que cambia todo.</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="quote-block reveal">
+  <div class="quote-line"></div>
+  <blockquote class="quote-text" data-es="&ldquo;El precio es lo que pagas. El valor es lo que obtienes.&rdquo;" data-en="&ldquo;Price is what you pay. Value is what you get.&rdquo;">"El precio es lo que pagas. El valor es lo que obtienes."</blockquote>
+  <div class="quote-attr">
+    <span class="quote-name">Warren Buffett</span>
+    <span class="quote-role" data-es="Inversor · CEO Berkshire Hathaway" data-en="Investor · CEO Berkshire Hathaway">Inversor · CEO Berkshire Hathaway</span>
+  </div>
+</div>
+
+<!-- AFFILIATES -->
+<section class="aff-section reveal">
+  <p class="s-label" data-es="Plataformas verificadas" data-en="Verified platforms">Plataformas verificadas</p>
+  <h2 class="s-title" data-es="Empezá a invertir <em>hoy</em>" data-en="Start investing <em>today</em>">Empezá a invertir <em>hoy</em></h2>
+  <div class="aff-grid">
+    <a href="https://www.binance.com/es/activity/referral-entry/CPA?ref=TU_CODIGO" target="_blank" class="aff-card">
+      <div class="aff-name">Binance</div>
+      <div class="aff-bonus">20% off comisiones</div>
+      <div class="aff-desc" data-es="El exchange más grande del mundo. Para principiantes y avanzados." data-en="The world's largest exchange. For beginners and advanced users.">El exchange más grande del mundo.</div>
+      <div class="aff-link"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg><span data-es="Abrir cuenta" data-en="Open account">Abrir cuenta</span></div>
+    </a>
+    <a href="https://www.bybit.com/es-ES/invite?ref=TU_CODIGO" target="_blank" class="aff-card">
+      <div class="aff-name">Bybit</div>
+      <div class="aff-bonus" data-es="Hasta $30,000 en bonos" data-en="Up to $30,000 in bonuses">Hasta $30,000 en bonos</div>
+      <div class="aff-desc" data-es="Trading avanzado. Plataforma de traders profesionales." data-en="Advanced trading. Professional traders' platform.">Trading avanzado. Para traders profesionales.</div>
+      <div class="aff-link"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg><span data-es="Abrir cuenta" data-en="Open account">Abrir cuenta</span></div>
+    </a>
+    <a href="https://coinbase.com/join/TU_CODIGO" target="_blank" class="aff-card">
+      <div class="aff-name">Coinbase</div>
+      <div class="aff-bonus">$10 en Bitcoin gratis</div>
+      <div class="aff-desc" data-es="La entrada más simple al mundo crypto. Regulado y seguro." data-en="The simplest entry to crypto. Regulated and secure.">La entrada más simple al mundo crypto.</div>
+      <div class="aff-link"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg><span data-es="Abrir cuenta" data-en="Open account">Abrir cuenta</span></div>
+    </a>
+    <a href="https://shop.ledger.com/es?r=TU_CODIGO" target="_blank" class="aff-card">
+      <div class="aff-name">Ledger</div>
+      <div class="aff-bonus" data-es="Wallet hardware más segura" data-en="Most secure hardware wallet">Wallet hardware</div>
+      <div class="aff-desc" data-es="Protege tus cryptos offline. La solución de inversores serios." data-en="Protect your crypto offline. For serious investors.">Protege tus cryptos offline.</div>
+      <div class="aff-link"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg><span data-es="Ver wallets" data-en="View wallets">Ver wallets</span></div>
+    </a>
+    <a href="https://www.etoro.com/" target="_blank" class="aff-card">
+      <div class="aff-name">eToro</div>
+      <div class="aff-bonus" data-es="Copy trading automático" data-en="Automatic copy trading">Copy trading</div>
+      <div class="aff-desc" data-es="Acciones globales. Copia las estrategias de los mejores traders." data-en="Global stocks. Copy top trader strategies.">Acciones globales y copy trading.</div>
+      <div class="aff-link"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg><span data-es="Abrir cuenta" data-en="Open account">Abrir cuenta</span></div>
+    </a>
+  </div>
+</section>
+
 <!-- MEMBERSHIP -->
-<section class="section" id="club">
-  <p class="section-label" data-es="El Club" data-en="The Club">El Club</p>
-  <h2 class="section-title" data-es="Elige tu nivel en el club" data-en="Choose your club level">Elige tu nivel en el club</h2>
-
-  <div class="membership-grid">
+<section class="mem-section reveal" id="club">
+  <p class="s-label" data-es="El Club" data-en="The Club">El Club</p>
+  <h2 class="s-title" data-es="Elige tu nivel de <em>acceso</em>" data-en="Choose your <em>access</em> level">Elige tu nivel de <em>acceso</em></h2>
+  <div class="mem-grid">
     <div class="tier">
-      <div class="tier-crown">🥉</div>
-      <div class="tier-name" data-es="Bronce Lord" data-en="Bronze Lord">Bronce Lord</div>
-      <div class="tier-price">$0 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <ul class="tier-features">
+      <p class="tier-level">Nivel I — Entrada</p>
+      <h3 class="tier-name" data-es="Bronce Lord" data-en="Bronze Lord">Bronce Lord</h3>
+      <div class="tier-price">$0 <small data-es="/mes" data-en="/mo">/mes</small></div>
+      <ul class="tier-list">
         <li data-es="Newsletter semanal" data-en="Weekly newsletter">Newsletter semanal</li>
-        <li data-es="Guías básicas" data-en="Basic guides">Guías básicas</li>
-        <li data-es="Telegram gratuito" data-en="Free Telegram">Telegram gratuito</li>
-        <li data-es="100 puntos LMC" data-en="100 LMC points">100 puntos LMC</li>
+        <li data-es="Guías educativas" data-en="Educational guides">Guías educativas</li>
+        <li data-es="Canal Telegram gratuito" data-en="Free Telegram channel">Canal Telegram gratuito</li>
+        <li data-es="Artículos publicados" data-en="Published articles">Artículos publicados</li>
       </ul>
-      <a href="#unirse" class="tier-cta outline" data-es="Comenzar gratis" data-en="Start free">Comenzar gratis</a>
+      <a href="#comunidad" class="tier-btn ghost" data-es="Comenzar gratis" data-en="Start free">Comenzar gratis</a>
     </div>
-
-    <div class="tier featured">
-      <div class="tier-badge" data-es="Más popular" data-en="Most popular">Más popular</div>
-      <div class="tier-crown">🥇</div>
-      <div class="tier-name" data-es="Oro Lord" data-en="Gold Lord">Oro Lord</div>
-      <div class="tier-price">$97 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <ul class="tier-features">
+    <div class="tier highlight">
+      <div class="tier-tag" data-es="Más popular" data-en="Most popular">Más popular</div>
+      <p class="tier-level">Nivel II — Oro</p>
+      <h3 class="tier-name" data-es="Oro Lord" data-en="Gold Lord">Oro Lord</h3>
+      <div class="tier-price">$97 <small data-es="/mes" data-en="/mo">/mes</small></div>
+      <ul class="tier-list">
         <li data-es="Todo lo anterior" data-en="Everything before">Todo lo anterior</li>
         <li data-es="Señales cripto y acciones" data-en="Crypto & stock signals">Señales cripto y acciones</li>
         <li data-es="Portafolio modelo" data-en="Model portfolio">Portafolio modelo</li>
         <li data-es="Q&A mensual en vivo" data-en="Monthly live Q&A">Q&A mensual en vivo</li>
-        <li data-es="1,000 puntos LMC" data-en="1,000 LMC points">1,000 puntos LMC</li>
+        <li data-es="Sistema de puntos LMC" data-en="LMC points system">Sistema de puntos LMC</li>
       </ul>
-      <a href="https://t.me/lordmillionclub" target="_blank" class="tier-cta solid" data-es="Unirme al club" data-en="Join the club">Unirme al club</a>
+      <a href="https://t.me/lordmillionclub" target="_blank" class="tier-btn solid" data-es="Unirme ahora" data-en="Join now">Unirme ahora</a>
     </div>
-
     <div class="tier">
-      <div class="tier-crown">👑</div>
-      <div class="tier-name" data-es="Lord Élite" data-en="Lord Elite">Lord Élite</div>
-      <div class="tier-price">$297 <span data-es="/mes" data-en="/mo">/mes</span></div>
-      <ul class="tier-features">
+      <p class="tier-level">Nivel III — Élite</p>
+      <h3 class="tier-name" data-es="Lord Élite" data-en="Lord Elite">Lord Élite</h3>
+      <div class="tier-price">$297 <small data-es="/mes" data-en="/mo">/mes</small></div>
+      <ul class="tier-list">
         <li data-es="Todo lo anterior" data-en="Everything before">Todo lo anterior</li>
         <li data-es="Mentoring 1:1 mensual" data-en="Monthly 1:1 mentoring">Mentoring 1:1 mensual</li>
         <li data-es="Red de contactos exclusiva" data-en="Exclusive network">Red de contactos exclusiva</li>
         <li data-es="Acceso directo al fundador" data-en="Direct founder access">Acceso directo al fundador</li>
-        <li data-es="5,000 puntos LMC" data-en="5,000 LMC points">5,000 puntos LMC</li>
+        <li data-es="Invitación a eventos LMC" data-en="LMC event invitations">Invitación a eventos LMC</li>
       </ul>
-      <a href="https://t.me/lordmillionclub" target="_blank" class="tier-cta outline" data-es="Solicitar acceso" data-en="Request access">Solicitar acceso</a>
+      <a href="https://t.me/lordmillionclub" target="_blank" class="tier-btn ghost" data-es="Solicitar acceso" data-en="Request access">Solicitar acceso</a>
     </div>
   </div>
 </section>
 
-<!-- TELEGRAM CTA -->
-<div class="telegram-section">
-  <h2 data-es="Únete a la comunidad gratuita" data-en="Join the free community">Únete a la comunidad gratuita</h2>
-  <p data-es="Señales, noticias y mentalidad millonaria. Directo en tu Telegram. Sin costo." data-en="Signals, news and millionaire mindset. Straight to your Telegram. No cost.">Señales, noticias y mentalidad millonaria. Directo en tu Telegram. Sin costo.</p>
-  <a href="https://t.me/lordmillionclub" target="_blank" class="telegram-btn">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-2.026 9.547c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.155 14.37l-2.953-.924c-.642-.204-.657-.642.136-.95l11.543-4.45c.537-.194 1.006.131.681.201z"/></svg>
-    <span data-es="Unirme al Telegram gratuito" data-en="Join free Telegram">Unirme al Telegram gratuito</span>
-  </a>
-</div>
+<!-- TELEGRAM -->
+<section class="tg-section reveal" id="comunidad">
+  <div class="tg-left">
+    <p class="s-label" data-es="Comunidad" data-en="Community">Comunidad</p>
+    <h2 class="s-title" data-es="La conversación que <em>importa</em>" data-en="The conversation that <em>matters</em>">La conversación que <em>importa</em></h2>
+    <p style="font-size:.82rem;color:var(--w3);margin-top:1.5rem;line-height:1.8;max-width:380px" data-es="Señales, análisis y mentalidad millonaria directo a tu Telegram. Sin filtros. Sin costo." data-en="Signals, analysis and millionaire mindset straight to your Telegram. No filters. No cost.">Señales, análisis y mentalidad millonaria directo a tu Telegram. Sin filtros. Sin costo.</p>
+  </div>
+  <div class="tg-right">
+    <div class="tg-stat"><span class="tg-stat-n">10K+</span><span class="tg-stat-l" data-es="Miembros activos" data-en="Active members">Miembros activos</span></div>
+    <div class="tg-divider"></div>
+    <div class="tg-stat"><span class="tg-stat-n">4</span><span class="tg-stat-l" data-es="Publicaciones semanales" data-en="Weekly publications">Publicaciones semanales</span></div>
+    <div class="tg-divider"></div>
+    <div class="tg-stat"><span class="tg-stat-n">$0</span><span class="tg-stat-l" data-es="Costo de entrada" data-en="Entry cost">Costo de entrada</span></div>
+    <div class="tg-divider"></div>
+    <a href="https://t.me/lordmillionclub" target="_blank" class="tg-btn">
+      <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.247l-2.026 9.547c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L6.155 14.37l-2.953-.924c-.642-.204-.657-.642.136-.95l11.543-4.45c.537-.194 1.006.131.681.201z"/></svg>
+      <span data-es="Unirme al canal gratuito" data-en="Join the free channel">Unirme al canal gratuito</span>
+    </a>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">Lord Million Club</a>
-  <div class="footer-links">
-    <a href="#aprende" data-es="Aprende" data-en="Learn">Aprende</a>
-    <a href="#mercados" data-es="Mercados" data-en="Markets">Mercados</a>
-    <a href="#club" data-es="El Club" data-en="The Club">El Club</a>
-    <a href="https://t.me/lordmillionclub" target="_blank">Telegram</a>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#">LORD MILLION CLUB</a>
+      <p data-es="El ecosistema financiero de élite. Educación, señales y mentalidad millonaria." data-en="The elite financial ecosystem. Education, signals and millionaire mindset.">El ecosistema financiero de élite. Educación, señales y mentalidad millonaria.</p>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Aprende" data-en="Learn">Aprende</h4>
+      <a href="#">Crypto & Bitcoin</a>
+      <a href="#" data-es="Acciones & ETF" data-en="Stocks & ETF">Acciones & ETF</a>
+      <a href="#">Trading</a>
+      <a href="#" data-es="Inmobiliaria" data-en="Real Estate">Inmobiliaria</a>
+    </div>
+    <div class="footer-col">
+      <h4 data-es="Mercados" data-en="Markets">Mercados</h4>
+      <a href="#" data-es="Metales & Materias primas" data-en="Metals & Commodities">Metales & Materias primas</a>
+      <a href="#" data-es="Lujo como inversión" data-en="Luxury as investment">Lujo como inversión</a>
+      <a href="#" data-es="Tokenización" data-en="Tokenization">Tokenización</a>
+      <a href="#" data-es="Bonos" data-en="Bonds">Bonos</a>
+    </div>
+    <div class="footer-col">
+      <h4>Club</h4>
+      <a href="#club" data-es="Membresías" data-en="Memberships">Membresías</a>
+      <a href="https://t.me/lordmillionclub" target="_blank">Telegram</a>
+      <a href="#">Newsletter</a>
+    </div>
   </div>
-  <span class="footer-copy">© 2026 Lord Million Club</span>
-  <div class="footer-disclaimer">
-    El contenido de Lord Million Club es solo educativo e informativo. No constituye asesoramiento financiero, legal ni de inversión. Invertir implica riesgos. Los resultados pasados no garantizan resultados futuros. Algunos enlaces son de afiliados — podemos recibir comisión sin costo adicional para vos. ·
-    Content is educational only. Not financial advice. Investing involves risk.
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Lord Million Club</span>
+    <p class="footer-disc" data-es="Contenido educativo únicamente. No constituye asesoramiento financiero. Invertir implica riesgos. Algunos enlaces son de afiliados." data-en="Educational content only. Not financial advice. Investing involves risk. Some links are affiliate links.">Contenido educativo únicamente. No constituye asesoramiento financiero. Invertir implica riesgos. Algunos enlaces son de afiliados.</p>
   </div>
 </footer>
 
 <script>
-  // ── IDIOMA ──
-  function setLang(lang) {
-    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-      if (el.tagName === 'INPUT') return;
-      el.innerHTML = el.getAttribute('data-' + lang);
-    });
-    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
-    document.documentElement.lang = lang;
-  }
-
-  // ── EMAIL FORM ──
-  function handleSubmit(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-input').value;
-    const btn = e.target.querySelector('button');
-    btn.textContent = '✓ Bienvenido al club';
-    btn.style.background = '#2A7A4A';
-    btn.style.color = '#fff';
-    // Aquí conectar con Beehiiv API cuando esté lista
-    console.log('Email capturado:', email);
-    setTimeout(() => window.open('https://t.me/lordmillionclub', '_blank'), 1200);
-  }
-
-  // ── SCROLL REVEAL ──
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.cat-card, .feature, .tier').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(20px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
+const slides=document.querySelectorAll('.slide');
+const labels=document.querySelectorAll('.slide-label');
+const dotsEl=document.getElementById('dots');
+let cur=0,timer;
+slides.forEach((_,i)=>{const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goTo(i);dotsEl.appendChild(d);});
+function goTo(n){slides[cur].classList.remove('active');labels[cur].classList.remove('active');dotsEl.children[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');labels[cur].classList.add('active');dotsEl.children[cur].classList.add('active');}
+function next(){goTo((cur+1)%slides.length);}
+timer=setInterval(next,5000);
+document.querySelector('.hero').addEventListener('mouseenter',()=>clearInterval(timer));
+document.querySelector('.hero').addEventListener('mouseleave',()=>{timer=setInterval(next,5000);});
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+function setLang(lang){document.querySelectorAll('[data-'+lang+']').forEach(el=>{const v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v;});document.querySelectorAll('.lang-sw button').forEach((b,i)=>{b.classList.toggle('on',(i===0&&lang==='es')||(i===1&&lang==='en'));});document.documentElement.lang=lang;}
+const ro=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 </script>
 </body>
 </html>
