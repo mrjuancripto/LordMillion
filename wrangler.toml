@@ -1,0 +1,30 @@
+# ============================================================
+# LORD MILLION CLUB — Worker 2: Content Engine
+# Archivo de configuración para Cloudflare Wrangler
+# ============================================================
+
+name = "lmc-content-worker"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# ── CRON: ejecutar cada 6 horas automáticamente ──────────────
+[triggers]
+crons = ["0 */6 * * *"]
+
+# ── KV NAMESPACE: base de datos gratuita para artículos ──────
+# PASO 1: Crear el KV ejecutando:
+#   wrangler kv:namespace create "LMC_ARTICLES"
+# PASO 2: Copiar el ID que devuelve y pegarlo abajo en "id"
+[[kv_namespaces]]
+binding = "LMC_ARTICLES"
+id = "PEGAR_AQUI_EL_ID_DEL_KV"
+# preview_id = "PEGAR_AQUI_EL_ID_PREVIEW"  # para desarrollo local
+
+# ── VARIABLES SECRETAS ────────────────────────────────────────
+# NO pongas valores reales aquí — usa el comando:
+#   wrangler secret put GEMINI_API_KEY
+# y pega tu key cuando lo pida
+
+# Variables opcionales para redes sociales (fase 2):
+#   wrangler secret put MAKE_WEBHOOK
+#   wrangler secret put BUFFER_WEBHOOK
